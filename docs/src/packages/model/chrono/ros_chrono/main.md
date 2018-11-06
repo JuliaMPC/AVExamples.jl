@@ -2,7 +2,12 @@
 A HMMWV vehicle model developed in Project `Chrono` is controlled using `ROS` parameters by 4 different modes, which are described below.
 
 ## Mode 1: dynamic path following
-[insert description]
+In this mode, the HMMWV vehicle receives dynamic paths and follows it by PID controller.
+To run the HMMWV vehicle using this mode, use the ROS node ‘path_following’.
+
+```
+rosrun ros_chrono path_following
+```
 
 ### Input
 These x-y trajectories obtained from external planners are used to generate a path for the `Chrono` vehicle to follow. For the standalone path follower demo, `planner_namespace = default`.
@@ -44,31 +49,145 @@ This displays all states and inputs specified in the `veh_status.msg` file.
 ### Notes
 
 ## Mode 2: dynamic steering trajectory following
-[insert description]
+In Mode 2, this node `steering_controller` can simulate the vehicle’s motion at the control of varying steering input. In this test, both steering and velocity command are hardcoded.
+
+To run the HMMWV vehicle using this mode, use the ROS node ‘steering_controller’.
+
+```
+rosrun ros_chrono steering_controller
+```
 
 ### Input
+These steering angles obtained from external planners are used to as an input for the `Chrono` vehicle to follow. For the standalone path follower demo, `planner_namespace = default`.
+
+Name | Description
+--- | ---
+`planner_namespace/control/vx`| longitudinal velocity (m/s)
+`planner_namespace/control/sa`| local steering angle (rad/s)
 
 ### Output
+If an actual vehicle is used or an external model of the vehicle is used, `/nloptcontrol_planner/flags/3DOF_plant` should be set to `false`. And the following `rosparam` states (points) should be set:
+
+Name | Description
+--- | ---
+`/veh_status/t_chrono`| simulation time (s)
+`/veh_status/x_pos`| global x position (m)
+`/veh_status/y_pos`| global y position (m)
+`/veh_status/x_v`| velocity in the x direction (vehicle frame) in (m/s)
+`/veh_status/x_a`| acceleration in the x direction (vehicle frame) in (m/s^s)
+`/veh_status/y_v`|  velocity in the y direction (vehicle frame) in (m/s)
+`/veh_status/yaw_curr`| yaw angle of the vehicle (rad)
+`/veh_status/yaw_rate`| the change rate of yaw angle of the vehicle (rad/s)
+`/veh_status/sa`| steering angle at the tire (rad)
+`/veh_status/thrt_in`| Throttle control input mapped from [0 1]
+`/veh_status/brk_in`| Braking control input mapped from [0 1]
+`/veh_status/str_in`| Steering control input mapped from [-1 1]
+
+
+To view states updating while `Chrono` is running, open another terminal and type:
+
+```
+$ rostopic echo vehicleinfo
+
+```
+This displays all states and inputs specified in the `veh_status.msg` file.
 
 ### Notes
+
 
 ## Mode 3: dynamic speed trajectory following
-[insert description]
+In Mode 3, this node `velocity_controller` can simulate the vehicle’s motion at the control of varying velocity. In this test velocity command is hardcoded.
+
+To run the HMMWV vehicle using this mode, use the ROS node ‘velocity_controller’.
+
+```
+rosrun ros_chrono velocity_controller
+```
 
 ### Input
+These velocity trajectories obtained from external planners are used to as an input for the `Chrono` vehicle to follow. 
+
+Name | Description
+--- | ---
+`planner_namespace/control/vx`| longitudinal velocity (m/s)
 
 ### Output
+If an actual vehicle is used or an external model of the vehicle is used, `/nloptcontrol_planner/flags/3DOF_plant` should be set to `false`. And the following `rosparam` states (points) should be set:
+
+Name | Description
+--- | ---
+`/veh_status/t_chrono`| simulation time (s)
+`/veh_status/x_pos`| global x position (m)
+`/veh_status/y_pos`| global y position (m)
+`/veh_status/x_v`| velocity in the x direction (vehicle frame) in (m/s)
+`/veh_status/x_a`| acceleration in the x direction (vehicle frame) in (m/s^s)
+`/veh_status/y_v`|  velocity in the y direction (vehicle frame) in (m/s)
+`/veh_status/yaw_curr`| yaw angle of the vehicle (rad)
+`/veh_status/yaw_rate`| the change rate of yaw angle of the vehicle (rad/s)
+`/veh_status/sa`| steering angle at the tire (rad)
+`/veh_status/thrt_in`| Throttle control input mapped from [0 1]
+`/veh_status/brk_in`| Braking control input mapped from [0 1]
+`/veh_status/str_in`| Steering control input mapped from [-1 1]
+
+To view states updating while `Chrono` is running, open another terminal and type:
+
+```
+$ rostopic echo vehicleinfo
+
+```
+This displays all states and inputs specified in the `veh_status.msg` file.
 
 ### Notes
+Below is the expected output for velocity controller:
+![link](images/velocity_control1.png)
 
 ## Mode 4: dynamic speed and steering trajectory following
-[insert description]
+In Mode 4, this node `steering_controller` can simulate the vehicle’s motion at the control of varying velocity and steering input. In this test, both steering and velocity command are hardcoded.
+
+To run the HMMWV vehicle using this mode, use the ROS node ‘steering_controller’.
+
+```
+rosrun ros_chrono steering_controller
+```
 
 ### Input
+These velocity and steering angle obtained from external planners are used to generate a path for the `Chrono` vehicle to follow. For the standalone path follower demo, `planner_namespace = default`.
+
+Name | Description
+--- | ---
+`planner_namespace/control/vx`| longitudinal velocity (m/s)
+`planner_namespace/control/sa`| local steering angle (rad/s)
 
 ### Output
+If an actual vehicle is used or an external model of the vehicle is used, `/nloptcontrol_planner/flags/3DOF_plant` should be set to `false`. And the following `rosparam` states (points) should be set:
+
+Name | Description
+--- | ---
+`/veh_status/t_chrono`| simulation time (s)
+`/veh_status/x_pos`| global x position (m)
+`/veh_status/y_pos`| global y position (m)
+`/veh_status/x_v`| velocity in the x direction (vehicle frame) in (m/s)
+`/veh_status/x_a`| acceleration in the x direction (vehicle frame) in (m/s^s)
+`/veh_status/y_v`|  velocity in the y direction (vehicle frame) in (m/s)
+`/veh_status/yaw_curr`| yaw angle of the vehicle (rad)
+`/veh_status/yaw_rate`| the change rate of yaw angle of the vehicle (rad/s)
+`/veh_status/sa`| steering angle at the tire (rad)
+`/veh_status/thrt_in`| Throttle control input mapped from [0 1]
+`/veh_status/brk_in`| Braking control input mapped from [0 1]
+`/veh_status/str_in`| Steering control input mapped from [-1 1]
+
+
+To view states updating while `Chrono` is running, open another terminal and type:
+
+```
+$ rostopic echo vehicleinfo
+
+```
+This displays all states and inputs specified in the `veh_status.msg` file.
 
 ### Notes
+The node rqt_graph for `steering_controller` is shown below:
+![link](images/nodegraph.png)
 
 
 ## All  Modes
@@ -168,16 +287,10 @@ To run:
 ### Expected Output
 
 ### Notes
-## MODE4: dynamic speed trajectory tracking
-[INSERT DESCRIPTION]
 
-To run:
-```
 
-```
-### Expected Output
 
-### Notes
+
 
 
 ## OLD (below this)
@@ -240,3 +353,4 @@ Name |3DOF | Chrono | Description
 `la` | 1.5775 | 1.871831 | Distance from COM to front axle
 `lb` | 1.7245 | 1.871831 | Distance from COM to rear axle
 `Tire Model` | PACEJKA | RIGID | Tire model used by vehicle
+
