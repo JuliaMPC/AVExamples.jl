@@ -2,46 +2,61 @@
 A HMMWV vehicle model developed in Project `Chrono` is controlled using `ROS` parameters by 4 different modes, which are described below.
 
 ## Mode 1: dynamic path following
-[insert description]
+
+In this mode, the HMMWV vehicle receives and follows dynamic paths with reference speed. The speed control and steering control are achieved internally using PID controllers.
+
+To run the HMMWV vehicle using this mode, use the ROS node `path_following`.
+
+```
+$ rosrun ros_chrono path_following
+```
 
 ### Input
-These x-y trajectories obtained from external planners are used to generate a path for the `Chrono` vehicle to follow. For the standalone path follower demo, `planner_namespace = default`.
+The input includes the global coordinates of path points and the reference speed obtained from external planners. In the demo of path following, `planner_namespace` is `default`.
 
 Name | Description
 --- | ---
-`system/planner/` | planner namespace specifying source of target x-y trajectories
-`/state/chrono/planner_namespace/traj/x`| global x position trajectory (m)
-`/state/chrono/planner_namespace/traj/yVal`| global y position trajectory (m)
+`planner_namespace/control/vx`| reference vehicle speed (m/s)
+`planner_namespace/control/x`| global x coordinate vector of trajectory points (m)
+`planner_namespace/control/y`| global y coordinate vector of trajectory points (m)
 
 ### Output
-If an actual vehicle is used or an external model of the vehicle is used, `/nloptcontrol_planner/flags/3DOF_plant` should be set to `false`. And the following `rosparam` states (points) should be set:
+
+If an actual vehicle is used or an external model of the vehicle is used, `/nloptcontrol_planner/flags/3DOF_plant` should be set to `false`. The output includes vehicle information stored in `/vehicleinfo`.
 
 Name | Description
 --- | ---
-`/state/chrono/t`| simulation time (s)
-`/state/chrono/x`| global x position (m)
-`/state/chrono/yVal`| global y position (m)
-`/state/chrono/psi`| global heading angle (rad)
-`/state/chrono/theta`| global pitch angle (rad)
-`/state/chrono/phi`| global roll angle (rad)
-`/state/chrono/ux`| velocity in the x direction (vehicle frame) in (m/s)
-`/state/chrono/v`| velocity in the y direction (vehicle frame) in (m/s)
-`/state/chrono/ax`| acceleration in the x direction (vehicle frame) in (m/s^s)
-`/state/chrono/r`| yaw rate about the z direction in (rad/s)
-`/state/chrono/sa`| steering angle at the tire (rad)
-`/state/chrono/control/thr`| Throttle control input mapped from [0 1]
-`/state/chrono/control/brk`| Braking control input mapped from [0 1]
-`/state/chrono/control/str`| Steering control input mapped from [-1 1]
+`/vehicleinfo/t_chrono`| simulation time (s)
+`/vehicleinfo/x_pos`| vehicle x position (m)
+`/vehicleinfo/y_pos`| vehicle y position (m)
+`/vehicleinfo/x_v`| vehicle velocity in x (m/s)
+`/vehicleinfo/x_a`| vehicle acceleration in x (m/s^2)
+`/vehicleinfo/y_v`| vehicle velocity in y(m)
+`/vehicleinfo/y_curr`| current yaw angle (rad)
+`/vehicleinfo/y_rate`| current yaw rate (rad/s)
+`/vehicleinfo/sa`| steering angle (rad)
+`/vehicleinfo/thrt_in`| throttle control input [0, +1]
+`/vehicleinfo/brk_in`| brake control input [0, +1]
+`/vehicleinfo/str_in`| steering control input (rad)
 
-To view states updating while `Chrono` is running, open another terminal and type:
+To view states updating while `Chrono` is running, open a new terminal and enter the container by
 
 ```
-$ rostopic echo vehicleinfo
+$ docker exec -it <container_name> /bin/bash
+```
+
+`<container_name>` can be auto-filled by the `Tab` key. Then run
 
 ```
+$ rostopic echo /vehicleinfo
+```
+
 This displays all states and inputs specified in the `veh_status.msg` file.
 
 ### Notes
+Currently this node only supports straight paths, but will be updated soon to support interpolation and curved paths.
+
+For more explanation of the usage, please check the demo at the end of this document.
 
 ## Mode 2: dynamic steering trajectory following
 [insert description]
@@ -137,15 +152,26 @@ Name | Description
 
 
 ## demoA | mode #1: dynamic path following
-[INSERT DESCRIPTION]
 
-To run:
+This demo controls HMMWV vehicle by mode 1, dynamic path following. Two straight paths, together with reference vehicle speed, are alternatively sent to the HMMWV vehicle. 
+
+To run this demo:
+```
+$ roslaunch ros_chrono path_following.launch
 ```
 
-```
 ### Expected Output
 
+![link](/images/path_following.jpg)
+
 ### Notes
+
+When runing for the first time, the project may need to be built first.
+
+```
+$ cd MAVs/ros
+$ catkin_make
+```
 
 ## MODE2: dynamic steering trajectory tracking
 [INSERT DESCRIPTION]
