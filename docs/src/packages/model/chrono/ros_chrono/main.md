@@ -363,7 +363,7 @@ To change target speed, edit:
 $ sudo gedit ros/src/models/chrono/ros_chrono/config/hmmwv_params.yaml
 ```
 ### Change Values of Updated Path
-For the path_follower demo, update the parameters of `/vehicleinfo/default/traj/yVal`, `/vehicleinfo/default/traj/x` in hmmwv_chrono_params.yaml. Change the system/planner parameter to chrono in chrono.yaml. In general, set system/planner to desired planner and update vehicleinfo/ <planner_name> /traj/x, vehicle/chrono/ <planner_name> /traj/yVal.
+For the path_follower demo, update the parameters of `/state/chrono/default/traj/yVal`, `/state/chrono/default/traj/x` in hmmwv_chrono_params.yaml. Change the system/planner parameter to chrono in chrono.yaml. In general, set system/planner to desired planner and update state/chrono/ <planner_name> /traj/x, vehicle/chrono/ <planner_name> /traj/yVal.
 
 
 ### Current Differences between 3DOF Vehicle model and HMMWV model:
@@ -373,6 +373,3 @@ Name |3DOF | Chrono | Description
 `la` | 1.5775 | 1.871831 | Distance from COM to front axle
 `lb` | 1.7245 | 1.871831 | Distance from COM to rear axle
 `Tire Model` | PACEJKA | RIGID | Tire model used by vehicle
-
-
-
