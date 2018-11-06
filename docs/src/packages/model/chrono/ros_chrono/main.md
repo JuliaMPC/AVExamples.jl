@@ -275,7 +275,7 @@ $ roslaunch ros_chrono path_following.launch
 
 ### Expected Output
 
-![link](/images/path_following.png)
+![link](./images/path_following.png)
 
 ### Notes
 
