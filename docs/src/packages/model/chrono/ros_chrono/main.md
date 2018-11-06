@@ -3,12 +3,11 @@ A HMMWV vehicle model developed in Project `Chrono` is controlled using `ROS` pa
 
 ## Mode 1: dynamic path following
 In this mode, the HMMWV vehicle receives and follows dynamic paths with reference speed. The speed control and steering control are achieved internally using PID controllers.
-
 To run the HMMWV vehicle using this mode, use the ROS node `path_following`.
-
 ```
 $ rosrun ros_chrono path_following
 ```
+
 
 ### Input
 The input includes the global coordinates of path points and the reference speed obtained from external planners. In the demo of path following, `planner_namespace` is `default`.
@@ -148,7 +147,7 @@ This displays all states and inputs specified in the `veh_status.msg` file.
 
 ### Notes
 Below is the expected output for velocity controller:
-![link](../images/chrono_demo/velocity_control1.png)
+![link](images/velocity_control1.png)
 
 ## Mode 4: dynamic speed and steering trajectory following
 In Mode 4, this node `steering_controller` can simulate the vehicle’s motion at the control of varying velocity and steering input. In this test, both steering and velocity command are hardcoded.
@@ -196,7 +195,7 @@ This displays all states and inputs specified in the `veh_status.msg` file.
 
 ### Notes
 The node rqt_graph for `steering_controller` is shown below:
-![link](../images/chrono_demo/nodegraph.png)
+![link](images/nodegraph.png)
 
 
 ## All  Modes
@@ -312,7 +311,6 @@ To run:
 
 
 
-
 ## OLD (below this)
 A vehicle model in `Chrono` that can be used through `ROS`.
 
@@ -373,3 +371,4 @@ Name |3DOF | Chrono | Description
 `la` | 1.5775 | 1.871831 | Distance from COM to front axle
 `lb` | 1.7245 | 1.871831 | Distance from COM to rear axle
 `Tire Model` | PACEJKA | RIGID | Tire model used by vehicle
+
