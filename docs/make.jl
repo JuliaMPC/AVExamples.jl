@@ -2,7 +2,6 @@ using Documenter, AVExamples
 makedocs(modules=[AVExamples],
 doctest=false, clean=true,
 format =:html,
-assets = ["assets/style.css"],
 authors="Huckleberry Febbo",
 sitename="MAVs",
 pages = [
