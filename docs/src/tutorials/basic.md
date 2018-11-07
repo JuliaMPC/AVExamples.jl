@@ -2,7 +2,11 @@
 There are three things that a basic user should be capable of: running demos, modifying configuration files, and saving results.
 
 ## Running demos
-The most basic usage of MAVs is simply running the demos. For instance, demoA can be run as:
+First start Docker container in the MAVs folder:
+```
+sh run.sh
+```
+Then, the most basic usage of MAVs is simply running the demos. For instance, demoA can be run as:
 ```
 $roslaunch system demoA.launch
 ```
