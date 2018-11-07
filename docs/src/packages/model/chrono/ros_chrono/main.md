@@ -9,13 +9,13 @@ $ rosrun ros_chrono path_following
 ```
 
 ### Input
-The input includes the global coordinates of path points and the reference speed obtained from external planners. In the demo of path following, `planner_namespace` is `default`.
+The input includes the global coordinates of path points and the reference speed obtained from external planners.
 
 Name | Description
 --- | ---
-`planner_namespace/control/vx`| reference vehicle speed (m/s)
-`planner_namespace/control/x`| global x coordinate vector of trajectory points (m)
-`planner_namespace/control/y`| global y coordinate vector of trajectory points (m)
+`/trajectory/ux`| reference vehicle speed (m/s)
+`/trajectory/x`| global x coordinate vector of trajectory points (m)
+`/trajectory/y`| global y coordinate vector of trajectory points (m)
 
 ### Notes
 Currently this node only supports straight paths, but will be updated soon to support interpolation and curved paths.
@@ -32,12 +32,12 @@ rosrun ros_chrono steering_controller
 ```
 
 ### Input
-These steering angles obtained from external planners are used to as an input for the `Chrono` vehicle to follow. For the standalone path follower demo, `planner_namespace = default`.
+These steering angles obtained from external planners are used to as an input for the `Chrono` vehicle to follow.
 
 Name | Description
 --- | ---
-`planner_namespace/control/vx`| longitudinal velocity (m/s)
-`planner_namespace/control/sa`| local steering angle (rad/s)
+`/trajectory/ux`| longitudinal velocity (m/s)
+`/trajectory/sa`| steering angle (rad/s)
 
 ### Notes
 
@@ -55,7 +55,7 @@ These velocity trajectories obtained from external planners are used to as an in
 
 Name | Description
 --- | ---
-`planner_namespace/control/vx`| longitudinal velocity (m/s)
+`/trajectory/vx`| longitudinal velocity (m/s)
 
 ### Notes
 Below is the expected output for velocity controller:
@@ -65,18 +65,17 @@ Below is the expected output for velocity controller:
 In Mode 4, this node `steering_controller` can simulate the vehicle’s motion at the control of varying velocity and steering input. In this test, both steering and velocity command are hardcoded.
 
 To run the HMMWV vehicle using this mode, use the ROS node ‘steering_controller’.
-
 ```
 rosrun ros_chrono steering_controller
 ```
 
 ### Input
-These velocity and steering angle obtained from external planners are used to generate a path for the `Chrono` vehicle to follow. For the standalone path follower demo, `planner_namespace = default`.
+These velocity and steering angle obtained from external planners are used to generate a path for the `Chrono` vehicle to follow.
 
 Name | Description
 --- | ---
-`planner_namespace/control/vx`| longitudinal velocity (m/s)
-`planner_namespace/control/sa`| local steering angle (rad/s)
+`/trajectory/ux`| longitudinal velocity (m/s)
+`/trajectory/sa`| local steering angle (rad/s)
 
 ### Notes
 The node rqt_graph for `steering_controller` is shown below:
@@ -86,7 +85,7 @@ The node rqt_graph for `steering_controller` is shown below:
 The following output, settings, flags, topics, and parameters apply to all modes.
 
 ### Output
-If an actual vehicle is used or an external model of the vehicle is used, `/nloptcontrol_planner/flags/3DOF_plant` should be set to `false`. The output includes vehicle information stored in `/state`.
+The output includes vehicle information stored in `/state` as:
 
 Name | Description
 --- | ---
@@ -100,11 +99,14 @@ Name | Description
 `/state/r`| current yaw rate (rad/s)
 `/state/sa`| steering angle (rad)
 
+The output includes Chrono control information stored in `/control` as:
+
 Name | Description
 --- | ---
-`/control/chrono/throttle`| throttle control input [0, +1]
-`/control/chrono/brake`| brake control input [0, +1]
-`/control/chrono/steering`| steering control input (rad)
+`/control/t`| simulation time (s)
+`/control/throttle`| throttle control input [0, +1]
+`/control/brake`| brake control input [0, +1]
+`/control/steering`| steering control input (rad)
 
 To view states updating while `Chrono` is running, open a new terminal and enter the container by
 
@@ -123,7 +125,7 @@ This displays all states in the `state.msg` file.
 
 Or:
 ```
-$ rostopic echo /control/chrono
+$ rostopic echo /trajectory/chrono
 ```
 This displays all controls in the `controlChrono.msg` file.
 
@@ -141,8 +143,8 @@ Name | Description
 ### Topics
 Name | Description
 --- | ---
-`/state` | Vehicle states, inputs, and time
-
+`/state` | vehicle states and time
+`/control` |  
 ### Parameters
 The following parameters with SI units and angles in radians can be modified:
 
