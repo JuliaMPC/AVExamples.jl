@@ -413,7 +413,7 @@ var documenterSearchIndex = {"docs": [
     "page": "ros_chrono",
     "title": "Input",
     "category": "section",
-    "text": "The input includes the global coordinates of path points and the reference speed obtained from external planners. In the demo of path following, planner_namespace is default.Name Description\nplanner_namespace/control/vx reference vehicle speed (m/s)\nplanner_namespace/control/x global x coordinate vector of trajectory points (m)\nplanner_namespace/control/y global y coordinate vector of trajectory points (m)"
+    "text": "The input includes the global coordinates of path points and the reference speed obtained from external planners.Name Description\n/trajectory/ux reference vehicle speed (m/s)\n/trajectory/x global x coordinate vector of trajectory points (m)\n/trajectory/y global y coordinate vector of trajectory points (m)"
 },
 
 {
@@ -437,7 +437,7 @@ var documenterSearchIndex = {"docs": [
     "page": "ros_chrono",
     "title": "Input",
     "category": "section",
-    "text": "These steering angles obtained from external planners are used to as an input for the Chrono vehicle to follow. For the standalone path follower demo, planner_namespace = default.Name Description\nplanner_namespace/control/vx longitudinal velocity (m/s)\nplanner_namespace/control/sa local steering angle (rad/s)"
+    "text": "These steering angles obtained from external planners are used to as an input for the Chrono vehicle to follow.Name Description\n/trajectory/ux longitudinal velocity (m/s)\n/trajectory/sa steering angle (rad/s)"
 },
 
 {
@@ -461,7 +461,7 @@ var documenterSearchIndex = {"docs": [
     "page": "ros_chrono",
     "title": "Input",
     "category": "section",
-    "text": "These velocity trajectories obtained from external planners are used to as an input for the Chrono vehicle to follow.Name Description\nplanner_namespace/control/vx longitudinal velocity (m/s)"
+    "text": "These velocity trajectories obtained from external planners are used to as an input for the Chrono vehicle to follow.Name Description\n/trajectory/vx longitudinal velocity (m/s)"
 },
 
 {
@@ -485,7 +485,7 @@ var documenterSearchIndex = {"docs": [
     "page": "ros_chrono",
     "title": "Input",
     "category": "section",
-    "text": "These velocity and steering angle obtained from external planners are used to generate a path for the Chrono vehicle to follow. For the standalone path follower demo, planner_namespace = default.Name Description\nplanner_namespace/control/vx longitudinal velocity (m/s)\nplanner_namespace/control/sa local steering angle (rad/s)"
+    "text": "These velocity and steering angle obtained from external planners are used to generate a path for the Chrono vehicle to follow.Name Description\n/trajectory/ux longitudinal velocity (m/s)\n/trajectory/sa local steering angle (rad/s)"
 },
 
 {
@@ -509,7 +509,7 @@ var documenterSearchIndex = {"docs": [
     "page": "ros_chrono",
     "title": "Output",
     "category": "section",
-    "text": "If an actual vehicle is used or an external model of the vehicle is used, /nloptcontrol_planner/flags/3DOF_plant should be set to false. The output includes vehicle information stored in /state.Name Description\n/state/t simulation time (s)\n/state/x vehicle x position (m)\n/state/y vehicle y position (m)\n/state/ux vehicle velocity in x (m/s)\n/state/ax vehicle acceleration in x (m/s^2)\n/state/v vehicle velocity in y(m)\n/state/psi current yaw angle (rad)\n/state/r current yaw rate (rad/s)\n/state/sa steering angle (rad)Name Description\n/control/chrono/throttle throttle control input [0, +1]\n/control/chrono/brake brake control input [0, +1]\n/control/chrono/steering steering control input (rad)To view states updating while Chrono is running, open a new terminal and enter the container by$ docker exec -it <container_name> /bin/bash<container_name> can be auto-filled by the Tab key. Then runTo show the states:$ rostopic echo /stateThis displays all states in the state.msg file.Or:$ rostopic echo /control/chronoThis displays all controls in the controlChrono.msg file."
+    "text": "The output includes vehicle information stored in /state as:Name Description\n/state/t simulation time (s)\n/state/x vehicle x position (m)\n/state/y vehicle y position (m)\n/state/ux vehicle velocity in x (m/s)\n/state/ax vehicle acceleration in x (m/s^2)\n/state/v vehicle velocity in y(m)\n/state/psi current yaw angle (rad)\n/state/r current yaw rate (rad/s)\n/state/sa steering angle (rad)The output includes Chrono control information stored in /control as:Name Description\n/control/t simulation time (s)\n/control/throttle throttle control input [0, +1]\n/control/brake brake control input [0, +1]\n/control/steering steering control input (rad)To view states updating while Chrono is running, open a new terminal and enter the container by$ docker exec -it <container_name> /bin/bash<container_name> can be auto-filled by the Tab key. Then runTo show the states:$ rostopic echo /stateThis displays all states in the state.msg file.Or:$ rostopic echo /trajectory/chronoThis displays all controls in the controlChrono.msg file."
 },
 
 {
@@ -533,7 +533,7 @@ var documenterSearchIndex = {"docs": [
     "page": "ros_chrono",
     "title": "Topics",
     "category": "section",
-    "text": "Name Description\n/state Vehicle states, inputs, and time"
+    "text": "Name Description\n/state vehicle states and time\n/control "
 },
 
 {
