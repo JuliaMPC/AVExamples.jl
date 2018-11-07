@@ -55,7 +55,7 @@ These velocity trajectories obtained from external planners are used to as an in
 
 Name | Description
 --- | ---
-`/trajectory/vx`| longitudinal velocity (m/s)
+`/trajectory/ux`| longitudinal velocity (m/s)
 
 ### Notes
 Below is the expected output for velocity controller:
