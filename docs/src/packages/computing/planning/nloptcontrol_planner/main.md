@@ -40,12 +40,12 @@ The purpose of this node is to publish reference state trajectories (vectors) in
 
 Name | Description
 --- | ---
-`/nloptcontrol_planner/traj/t`| time (s)
-`/nloptcontrol_planner/traj/x`| global x position trajectory (m)
-`/nloptcontrol_planner/traj/y`| global y position trajectory (m)
-`/nloptcontrol_planner/traj/psi`| global heading angle trajectory (rad)
-`/nloptcontrol_planner/traj/sa`| steering angle trajectory at the tire (rad)
-`/nloptcontrol_planner/traj/vx`| velocity trajectory in the x direction (vehicle frame) (m/s)
+`/trajectory/t`| time (s)
+`/trajectory/x`| global x position trajectory (m)
+`/trajectory/y`| global y position trajectory (m)
+`/trajectory/psi`| global heading angle trajectory (rad)
+`/trajectory/sa`| steering angle trajectory at the tire (rad)
+`/trajectory/ux`| speed in the x direction (vehicle frame) (m/s)
 
 ### Optimization and MPC message
 The error between the predicted initial state and the actual initial state is provided along with some additional optimization information in the `Optimization.msg` as
@@ -67,12 +67,11 @@ Name | Description
 `/nloptcontrol_planner/case_name` | name of configuration file for solver settings
 `/nloptcontrol_planner/obstacle_name` | name of configuration file for obstacle field
 `/nloptcontrol_planner/flags/3DOF_plant` | indicates if the 3DOF plant model in VehicleModels.jl will be used
-`/nloptcontrol_planner/flags/init` | indicates if the planner has finished initilization
+`/nloptcontrol_planner/flags/init` | indicates if the planner has finished initialization
 `/nloptcontrol_planner/flags/known_environment` | indicates if the obstacle information is assumed to be known
 
 ## demo
 A stand-alone demo to show that the `NLOptControl.jl` is solving the OCP and connected to `ROS`.
-
 
 ### To Run
 ```

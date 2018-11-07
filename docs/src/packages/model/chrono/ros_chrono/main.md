@@ -85,22 +85,20 @@ The node rqt_graph for `steering_controller` is shown below:
 The following output, settings, flags, topics, and parameters apply to all modes.
 
 ### Output
-The output includes vehicle information stored in `/state` as:
-
+The output includes vehicle information stored `State.msg` and sent to the `/state` topic as:
 Name | Description
 --- | ---
 `/state/t`| simulation time (s)
-`/state/x`| vehicle x position (m)
-`/state/y`| vehicle y position (m)
-`/state/ux`| vehicle velocity in x (m/s)
-`/state/ax`| vehicle acceleration in x (m/s^2)
-`/state/v`| vehicle velocity in y(m)
-`/state/psi`| current yaw angle (rad)
-`/state/r`| current yaw rate (rad/s)
+`/state/x`| global vehicle x position (m)
+`/state/y`| global vehicle y position (m)
+`/state/ux`| vehicle speed in x direction (vehicle frame) (m/s)
+`/state/ax`| vehicle acceleration in x (vehicle frame) (m/s^2)
+`/state/v`| vehicle speed in y direction (vehicle frame) (m)
+`/state/psi`| global yaw angle (rad)
+`/state/r`| yaw rate (rad/s)
 `/state/sa`| steering angle (rad)
 
-The output includes Chrono control information stored in `/control` as:
-
+The output includes Chrono control information stored in `Control.msg` and which is sent to the `/control` as topic as:
 Name | Description
 --- | ---
 `/control/t`| simulation time (s)
@@ -109,7 +107,6 @@ Name | Description
 `/control/steering`| steering control input (rad)
 
 To view states updating while `Chrono` is running, open a new terminal and enter the container by
-
 ```
 $ docker exec -it <container_name> /bin/bash
 ```
