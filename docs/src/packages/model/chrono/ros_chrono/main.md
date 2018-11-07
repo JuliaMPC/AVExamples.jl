@@ -201,15 +201,6 @@ $ roslaunch ros_chrono path_following.launch
 
 ![link](./images/path_following.png)
 
-### Notes
-
-When runing for the first time, the project may need to be built first.
-
-```
-$ cd MAVs/ros
-$ catkin_make
-```
-
 ## MODE2: dynamic steering trajectory tracking
 [INSERT DESCRIPTION]
 
