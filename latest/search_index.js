@@ -561,14 +561,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "packages/model/chrono/ros_chrono/main.html#Notes-5",
-    "page": "ros_chrono",
-    "title": "Notes",
-    "category": "section",
-    "text": "When runing for the first time, the project may need to be built first.$ cd MAVs/ros\n$ catkin_make"
-},
-
-{
     "location": "packages/model/chrono/ros_chrono/main.html#MODE2:-dynamic-steering-trajectory-tracking-1",
     "page": "ros_chrono",
     "title": "MODE2: dynamic steering trajectory tracking",
@@ -585,7 +577,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "packages/model/chrono/ros_chrono/main.html#Notes-6",
+    "location": "packages/model/chrono/ros_chrono/main.html#Notes-5",
     "page": "ros_chrono",
     "title": "Notes",
     "category": "section",
@@ -609,7 +601,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "packages/model/chrono/ros_chrono/main.html#Notes-7",
+    "location": "packages/model/chrono/ros_chrono/main.html#Notes-6",
     "page": "ros_chrono",
     "title": "Notes",
     "category": "section",
