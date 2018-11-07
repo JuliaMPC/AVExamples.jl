@@ -13,7 +13,7 @@ Tested on Ubuntu Xenial (16.04)
 * [nvidia-docker](https://github.com/NVIDIA/nvidia-docker/wiki/Installation)
 
 ## Installation
-1. Clone the `develop` branch of the repo
+1. Clone the `develop` branch of the repository
 ```
 git clone -b develop https://github.com/JuliaMPC/MAVs
 ```
