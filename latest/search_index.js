@@ -461,7 +461,7 @@ var documenterSearchIndex = {"docs": [
     "page": "ros_chrono",
     "title": "Input",
     "category": "section",
-    "text": "These velocity trajectories obtained from external planners are used to as an input for the Chrono vehicle to follow.Name Description\n/trajectory/vx longitudinal velocity (m/s)"
+    "text": "These velocity trajectories obtained from external planners are used to as an input for the Chrono vehicle to follow.Name Description\n/trajectory/ux longitudinal velocity (m/s)"
 },
 
 {
