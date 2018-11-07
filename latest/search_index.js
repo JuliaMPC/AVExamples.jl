@@ -509,7 +509,7 @@ var documenterSearchIndex = {"docs": [
     "page": "ros_chrono",
     "title": "Output",
     "category": "section",
-    "text": "The output includes vehicle information stored in /state as:Name Description\n/state/t simulation time (s)\n/state/x vehicle x position (m)\n/state/y vehicle y position (m)\n/state/ux vehicle velocity in x (m/s)\n/state/ax vehicle acceleration in x (m/s^2)\n/state/v vehicle velocity in y(m)\n/state/psi current yaw angle (rad)\n/state/r current yaw rate (rad/s)\n/state/sa steering angle (rad)The output includes Chrono control information stored in /control as:Name Description\n/control/t simulation time (s)\n/control/throttle throttle control input [0, +1]\n/control/brake brake control input [0, +1]\n/control/steering steering control input (rad)To view states updating while Chrono is running, open a new terminal and enter the container by$ docker exec -it <container_name> /bin/bash<container_name> can be auto-filled by the Tab key. Then runTo show the states:$ rostopic echo /stateThis displays all states in the state.msg file.Or:$ rostopic echo /trajectory/chronoThis displays all controls in the controlChrono.msg file."
+    "text": "The output includes vehicle information stored State.msg and sent to the /state topic as: Name | Description –- | –- /state/t| simulation time (s) /state/x| global vehicle x position (m) /state/y| global vehicle y position (m) /state/ux| vehicle speed in x direction (vehicle frame) (m/s) /state/ax| vehicle acceleration in x (vehicle frame) (m/s^2) /state/v| vehicle speed in y direction (vehicle frame) (m) /state/psi| global yaw angle (rad) /state/r| yaw rate (rad/s) /state/sa| steering angle (rad)The output includes Chrono control information stored in Control.msg and which is sent to the /control as topic as: Name | Description –- | –- /control/t| simulation time (s) /control/throttle| throttle control input [0, +1] /control/brake| brake control input [0, +1] /control/steering| steering control input (rad)To view states updating while Chrono is running, open a new terminal and enter the container by$ docker exec -it <container_name> /bin/bash<container_name> can be auto-filled by the Tab key. Then runTo show the states:$ rostopic echo /stateThis displays all states in the state.msg file.Or:$ rostopic echo /trajectory/chronoThis displays all controls in the controlChrono.msg file."
 },
 
 {
@@ -765,7 +765,7 @@ var documenterSearchIndex = {"docs": [
     "page": "nloptcontrol_planner",
     "title": "Trajectories",
     "category": "section",
-    "text": "The purpose of this node is to publish reference state trajectories (vectors) in the Control.msg asName Description\n/nloptcontrol_planner/traj/t time (s)\n/nloptcontrol_planner/traj/x global x position trajectory (m)\n/nloptcontrol_planner/traj/y global y position trajectory (m)\n/nloptcontrol_planner/traj/psi global heading angle trajectory (rad)\n/nloptcontrol_planner/traj/sa steering angle trajectory at the tire (rad)\n/nloptcontrol_planner/traj/vx velocity trajectory in the x direction (vehicle frame) (m/s)"
+    "text": "The purpose of this node is to publish reference state trajectories (vectors) in the Control.msg asName Description\n/trajectory/t time (s)\n/trajectory/x global x position trajectory (m)\n/trajectory/y global y position trajectory (m)\n/trajectory/psi global heading angle trajectory (rad)\n/trajectory/sa steering angle trajectory at the tire (rad)\n/trajectory/ux speed in the x direction (vehicle frame) (m/s)"
 },
 
 {
@@ -781,7 +781,7 @@ var documenterSearchIndex = {"docs": [
     "page": "nloptcontrol_planner",
     "title": "Flags and Settings",
     "category": "section",
-    "text": "Name Description\n/nloptcontrol_planner/case_name name of configuration file for solver settings\n/nloptcontrol_planner/obstacle_name name of configuration file for obstacle field\n/nloptcontrol_planner/flags/3DOF_plant indicates if the 3DOF plant model in VehicleModels.jl will be used\n/nloptcontrol_planner/flags/init indicates if the planner has finished initilization\n/nloptcontrol_planner/flags/known_environment indicates if the obstacle information is assumed to be known"
+    "text": "Name Description\n/nloptcontrol_planner/case_name name of configuration file for solver settings\n/nloptcontrol_planner/obstacle_name name of configuration file for obstacle field\n/nloptcontrol_planner/flags/3DOF_plant indicates if the 3DOF plant model in VehicleModels.jl will be used\n/nloptcontrol_planner/flags/init indicates if the planner has finished initialization\n/nloptcontrol_planner/flags/known_environment indicates if the obstacle information is assumed to be known"
 },
 
 {
