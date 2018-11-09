@@ -40,6 +40,8 @@ pages = [
         "demoE" => "packages/system/demos/demoE.md",
         "demoF" => "packages/system/demos/demoF.md",
         "demoG" => "packages/system/demos/demoG.md",
+        "demoH" => "packages/system/demos/demoH.md",
+        "demoI" => "packages/system/demos/demoI.md",
     ],
     "Docker" => [
         "Workflow" => "docker/workflow.md",
