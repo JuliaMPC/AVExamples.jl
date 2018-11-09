@@ -1369,6 +1369,94 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "packages/system/demos/demoH.html#",
+    "page": "demoH",
+    "title": "demoH",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "packages/system/demos/demoH.html#demoH-1",
+    "page": "demoH",
+    "title": "demoH",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "packages/system/demos/demoH.html#obstacle-detector-with-nloptcontrol_planner-and-vehicle_description-1",
+    "page": "demoH",
+    "title": "obstacle detector with nloptcontrol_planner and vehicle_description",
+    "category": "section",
+    "text": "Same as system demoF.launch except, known_environment is set to false, obstacle_detector is used to detect the obstacle information and pass it to nloptcontrol_planner."
+},
+
+{
+    "location": "packages/system/demos/demoH.html#status-working??-1",
+    "page": "demoH",
+    "title": "status = working??",
+    "category": "section",
+    "text": "There are still previous obstacle information in the current frame.  "
+},
+
+{
+    "location": "packages/system/demos/demoH.html#To-Run-1",
+    "page": "demoH",
+    "title": "To Run",
+    "category": "section",
+    "text": "roslaunch system demoH.launch"
+},
+
+{
+    "location": "packages/system/demos/demoH.html#Expected-Output-1",
+    "page": "demoH",
+    "title": "Expected Output",
+    "category": "section",
+    "text": "Same as demoF output.Frame map is not published until nloptcontrol_planner is initialized."
+},
+
+{
+    "location": "packages/system/demos/demoI.html#",
+    "page": "demoI",
+    "title": "demoI",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "packages/system/demos/demoI.html#demoI-1",
+    "page": "demoI",
+    "title": "demoI",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "packages/system/demos/demoI.html#nloptcontrol_planner-is-used-to-generate-a-path-which-avoids-all-the-obstacles-and-give-a-optimal-trajectory.-Then-the-generated-trajectory-will-be-passed-to-chronode,-and-vehicle-will-follow-the-trajectory-by-/trajectory/sa-and-/trajectory/ux-in-chrono-environment.-1",
+    "page": "demoI",
+    "title": "nloptcontrol_planner is used to generate a path which avoids all the obstacles and give a optimal trajectory. Then the generated trajectory will be passed to chronode, and vehicle will follow the trajectory by /trajectory/sa and /trajectory/ux in chrono environment.",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "packages/system/demos/demoI.html#To-Run-1",
+    "page": "demoI",
+    "title": "To Run",
+    "category": "section",
+    "text": "roslaunch system demoI.launch"
+},
+
+{
+    "location": "packages/system/demos/demoI.html#Expected-Output-1",
+    "page": "demoI",
+    "title": "Expected Output",
+    "category": "section",
+    "text": "First figure shows the ui for demoI, where Running model for the: xxx time shows the current step time.  (Image: link) Second figure shows the topic maps for demo I where we can see nlopcontrol_planner/control communicate with /obstacle_avoidance and \\path (Image: link)"
+},
+
+{
     "location": "docker/workflow.html#",
     "page": "Workflow",
     "title": "Workflow",
