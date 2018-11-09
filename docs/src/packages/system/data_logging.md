@@ -2,7 +2,7 @@
 
 ## System logger
 
-This demonstrates how we can use rosbag record using a launch file. Details for existing rosbag APIs can be found here [rosbag](http://wiki.ros.org/rosbag/Commandline). For implementation details in launch file, please refer to [Record with rosbag from launch file](https://answers.ros.org/question/52773/record-with-rosbag-from-launch-file/). We record complete `tf` tree being pulished and filter out the tranformation between `map` and `base_footprint` using a shell script.
+This demonstrates how we can use rosbag record using a launch file. Details for existing rosbag APIs can be found here [rosbag](http://wiki.ros.org/rosbag/Commandline). For implementation details in launch file, please refer to [Record with rosbag from launch file](https://answers.ros.org/question/52773/record-with-rosbag-from-launch-file/). We record `/nlopcontrol_planner/opt` topic and convert to `.csv` file using `rosbag2csv.py` script.
 
 ## Steps
 
@@ -12,21 +12,21 @@ Put following code in your demo launch file:
 ```xml
 <?xml version="1.0"?>
 <launch>
-  <arg name="system_params_path" default="$(find system)/config/system/demos/demoD.yaml"/>
+  <arg name="system_params_path" default="$(find system)/config/system/demos/demoB.yaml"/>
 
   <!-- Add your nodes -->
 
-  <node pkg="rosbag" type="record" name="record"
-       args="record -O robot_tf.bag tf"/>
+  <node pkg="rosbag" type="record" name="record" args="record -O /home/mavs/MAVs/results/opt.bag /nlopcontrol_planner/opt"/>
 
   <node name="bootstrap" pkg="system" type="bootstrap.jl" output="screen"/>
 
 </launch>
 ```
-Here we specified the topics to record as `args` to `record` node, in this case `tf` topic will be saved in a file called `robot_tf.bag` in `<home>/.ros/`
+Here we specified the topics to record as `args` to `record` node, in this case `opt` topic will be saved in a file called `opt.bag` in `/home/mavs/MAVs/results/`
 
 ### 2. Run follwing in cmd prompt
 ```
-$(rospack find system)/scripts/rosbag_filter.sh
+$cd /home/mavs/MAVs/results
+$python rosbag2csv.py opt.bag
 ```
-This script will create a `$system_pkg_path/data/robot_tf.txt` which is a csv file containing tranformation between `map` and `base_footprint` that can be used for plotting vehicle path
+This script will create `opt.csv` which is a csv file containing Optimization message  
