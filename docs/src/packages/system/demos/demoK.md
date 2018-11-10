@@ -22,7 +22,7 @@ The relationship between different topics/topics is checked by opening a new ter
 $ docker exec -it <container_name> /bin/bash
 ```
 
-`<container_name>` can be auto filler by `Tab` key. Then, open the rqt graph by
+`<container_name>` can be auto filled by the `Tab` key. Then, open the rqt graph by
 
 ```
 $ rqt_graph
