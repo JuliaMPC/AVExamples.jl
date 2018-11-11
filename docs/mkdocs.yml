@@ -12,7 +12,7 @@ markdown_extensions:
   - mdx_math # For LaTeX
 
 extra_css:
-  - assets/style.css #   - assets/Documenter.css
+  - assets/Documenter.css
 
 extra_javascript:
   - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML

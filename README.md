@@ -4,7 +4,7 @@
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://juliampc.github.io/AVExamples.jl/stable/)
 [![Latest](https://img.shields.io/badge/docs-latest-blue.svg)](https://juliampc.github.io/AVExamples.jl/latest/)
 
-This repo is used for documenting the MAVs project and potentially other autonomous vehicle related projects.
+This repo is used for documenting the MAVs project autonomous vehicle project.
 
 
 ## Documentation
