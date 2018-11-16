@@ -51,7 +51,7 @@ pages = [
 )
 
 deploydocs(
-    deps=Deps.pip("mkdocs","python-markdown-math"),
+    deps=nothing,
     repo="github.com/JuliaMPC/AVExamples.jl.git",
     target="build",
     osname="linux",
